@@ -1,11 +1,9 @@
-*~
-/target
-/plan/
-/plans/
-/dist/
-/log/
-/temp/
-.DS_Store
+target/
+Cargo.lock
+**/*.rs.bk
 *.swp
-/apps/cadcraft-web/dist/
-/.claude/worktrees/
+.DS_Store
+
+# Demonstration artifacts
+/brag/
+brag/

@@ -1,0 +1,14 @@
+[package]
+name = "cadcraft-ui-martensite"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Sovereign retained-mode computer-aided drafting user interface for CADCraft powered by Martensite"
+
+[dependencies]
+serde = { workspace = true, features = ["derive"] }
+serde_json.workspace = true
+tracing.workspace = true
+
+[dev-dependencies]
+proptest = "1.4"
