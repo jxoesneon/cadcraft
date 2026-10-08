@@ -57,6 +57,28 @@ impl From<cadcraft_doc::DocError> for EngineError {
 
 pub type Result<T> = std::result::Result<T, EngineError>;
 
+/// The application engine: drawings, commands, undo history and view state.
+/// Named `Engine` so UIs (egui, Martensite, headless) refer to one type.
+pub type Engine = Session;
+
+/// Toolbox tool identity, in ribbon order. UI-agnostic so every front-end
+/// shares the canonical list; each UI maps it to its own presentation.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Tool {
+    Select,
+    Line,
+    Polyline,
+    Circle,
+    Arc,
+    Move,
+    Copy,
+    Trim,
+    Extend,
+    Pan,
+    ZoomWindow,
+    ZoomExtents,
+}
+
 /// A 2D view of a space: world centre and visible height in drawing units.
 #[derive(Clone, Copy, Debug, PartialEq, Serialize, Deserialize)]
 pub struct View {

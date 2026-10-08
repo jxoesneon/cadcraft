@@ -7,10 +7,7 @@ pub struct CadCliState {
 
 impl CadCliState {
     pub fn new() -> Self {
-        Self {
-            current_input: String::new(),
-            history: Vec::new(),
-        }
+        Self { current_input: String::new(), history: Vec::new() }
     }
 
     pub fn submit_command(&mut self) -> Option<String> {
@@ -22,6 +19,12 @@ impl CadCliState {
         } else {
             None
         }
+    }
+}
+
+impl Default for CadCliState {
+    fn default() -> Self {
+        Self::new()
     }
 }
 

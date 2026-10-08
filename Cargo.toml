@@ -23,6 +23,7 @@ cadcraft-render = { path = "crates/render" }
 cadcraft-io = { path = "crates/io" }
 cadcraft-engine = { path = "crates/engine" }
 cadcraft-ui-egui = { path = "crates/ui-egui" }
+cadcraft-ui-martensite = { path = "crates/ui-martensite" }
 cadcraft-mcp = { path = "crates/mcp" }
 
 # foundation
