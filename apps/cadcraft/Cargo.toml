@@ -11,6 +11,9 @@ default-run = "cadcraft"
 workspace = true
 
 [package.metadata.generate-rpm]
+assets = [
+    { source = "target/release/cadcraft", dest = "/usr/bin/cadcraft", mode = "755" }
+]
 
 [dependencies]
 cadcraft-engine = { workspace = true }
