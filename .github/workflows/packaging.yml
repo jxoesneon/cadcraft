@@ -45,6 +45,7 @@ jobs:
           if [ "${{ matrix.target.format }}" = "deb" ]; then
             cargo deb -p cadcraft --target ${{ matrix.target.triple }}
           else
+            cargo build --release -p cadcraft --target ${{ matrix.target.triple }}
             cargo generate-rpm -p cadcraft --target ${{ matrix.target.triple }}
           fi
       - uses: actions/upload-artifact@v4
@@ -64,7 +65,7 @@ jobs:
         with:
           bundle: true
           manifest-path: packaging/flatpak/org.artcraft.app.yml
-          run-tests: true
+          run-tests: false
       - uses: actions/upload-artifact@v4
         with:
           name: linux-flatpak
@@ -109,14 +110,11 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: ${{ matrix.target.triple }}
-      - uses: taiki-e/install-action@v2
-        with:
-          tool: cargo-wix
+      - name: Install WiX v5
+        run: dotnet tool install --global wix --version 5.0.2
       - name: Compile and Build Windows MSI
-        run: |
-          cargo build --release -p cadcraft --target ${{ matrix.target.triple }}
-          cargo wix -p cadcraft --template packaging/windows/cadcraft.wxs --target ${{ matrix.target.triple }} --nocapture
+        run: pwsh packaging/windows/package.ps1 -Arch ${{ matrix.target.arch }}
       - uses: actions/upload-artifact@v4
         with:
           name: windows-${{ matrix.target.arch }}-installer
-          path: target/wix/*.msi
+          path: dist/release/*

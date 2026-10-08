@@ -20,7 +20,7 @@ modules:
   - name: cadcraft
     buildsystem: simple
     build-commands:
-      - cargo build --release
+      - cargo build --release -p cadcraft
       - install -Dm755 target/release/cadcraft /app/bin/cadcraft
     sources:
       - type: dir
