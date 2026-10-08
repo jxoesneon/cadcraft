@@ -46,6 +46,7 @@ jobs:
             cargo deb -p cadcraft --target ${{ matrix.target.triple }}
           else
             cargo build --release -p cadcraft --target ${{ matrix.target.triple }}
+            ln -s apps/cadcraft cadcraft || true
             cargo generate-rpm -p cadcraft --target ${{ matrix.target.triple }}
           fi
       - uses: actions/upload-artifact@v4

@@ -24,4 +24,4 @@ modules:
       - install -Dm755 target/release/cadcraft /app/bin/cadcraft
     sources:
       - type: dir
-        path: .
+        path: ../../
