@@ -10,6 +10,8 @@ default-run = "cadcraft"
 [lints]
 workspace = true
 
+[package.metadata.generate-rpm]
+
 [dependencies]
 cadcraft-engine = { workspace = true }
 cadcraft-ui-egui = { workspace = true }
